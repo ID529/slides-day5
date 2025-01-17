@@ -98,6 +98,7 @@
   <link href="data-linkage-methods_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="data-linkage-methods_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="data-linkage-methods_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="data-linkage-methods_files/libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
   <link href="data-linkage-methods_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
@@ -396,7 +397,7 @@
 <p>ID 529: Data Management and Analytic Workflows in R</p>
 </div>
 <div class="white-12-pt">
-<p>Dean Marengi | Friday, January 12<sup>th</sup>, 2024</p>
+<p>Dean Marengi | Friday, January 17<sup>th</sup>, 2025</p>
 </div>
 </section>
 <section id="motivation" class="slide level2 smaller">
@@ -540,7 +541,7 @@
 <li><strong>We will focus on <code>dplyr</code></strong>
 <ul>
 <li><code>dplyr</code> functions tend to be more consistent, and intuitive to implement</li>
-<li>Can be combined into chained data manipulation sequences (<code>%&gt;%</code>)</li>
+<li>Can be combined into chained data manipulation sequences (<code>|&gt; or %&gt;%</code>)</li>
 <li>Also offers additional types of joins such as semi-joins and anti-joins</li>
 </ul></li>
 </ul>
@@ -585,12 +586,24 @@
 <div class="small-break">
 
 </div>
+<p><strong>Set operations</strong></p>
 <ul>
-<li><span class="blue-bold">Set operations</span>
+<li>Combine observations from two datasets, but treats observations as set elements
 <ul>
-<li>Combine observations from two datasets, but treats observations as set elements</li>
-<li><code>intersect()</code>, <code>union()</code>, <code>setdiff()</code></li>
+<li>i.e., treat rows in each table as individual items in a set
+<ul>
+<li>Both tables need to contain the same columns</li>
+<li>Find rows in both tables (<span class="blue-bold">intersection</span>)</li>
+<li>Find rows in either table, but not both (<span class="blue-bold">union</span>)</li>
+<li>Find rows in one table, but not other (<span class="blue-bold">difference</span>)</li>
 </ul></li>
+</ul></li>
+</ul>
+<div class="small-break">
+
+</div>
+<ul>
+<li><code>intersect()</code>, <code>union()</code>, <code>setdiff()</code></li>
 </ul>
 <p><img data-src="images/hex-dplyr.png" class="absolute" style="bottom: 1px; right: 0px; height: 30%; "></p>
 </section>
@@ -714,8 +727,8 @@
 <p><strong>Main arguments</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">left_join</span>(</span>
-<span id="cb8-2"><a href="#cb8-2"></a>  x,</span>
-<span id="cb8-3"><a href="#cb8-3"></a>  y,</span>
+<span id="cb8-2"><a href="#cb8-2"></a>  x, <span class="co"># dataset 1 (i.e., the dataset on the left side)</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>  y, <span class="co"># dataset 2 (i.e., the dataset on the right side)</span></span>
 <span id="cb8-4"><a href="#cb8-4"></a>  <span class="at">by =</span> <span class="cn">NULL</span>,</span>
 <span id="cb8-5"><a href="#cb8-5"></a>  <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">".x"</span>, <span class="st">".y"</span>),</span>
 <span id="cb8-6"><a href="#cb8-6"></a>  <span class="at">keep =</span> <span class="cn">FALSE</span></span>
@@ -740,7 +753,7 @@
 </ul></li>
 <li>Of the joins, used most frequently
 <ul>
-<li>Allow you to add new variables from other tables without dropping observations</li>
+<li>Allow you to add new variables from other tables</li>
 </ul></li>
 </ul>
 </div>
@@ -1387,20 +1400,25 @@
 <ul>
 <li><strong>R for Data Science - Relational Data:</strong> <a href="https://r4ds.had.co.nz/relational-data.html" class="uri">https://r4ds.had.co.nz/relational-data.html</a></li>
 </ul>
+<div class="small-break">
+
+</div>
+<ul>
+<li><strong>The Epidemiologist R Handbook:</strong> <a href="https://epirhandbook.com/en/new_pages/joining_matching.html" class="uri">https://epirhandbook.com/en/new_pages/joining_matching.html</a></li>
+</ul>
 </section>
 <section id="activity" class="slide level2 smaller">
 <h2>Activity</h2>
 <p><br> <br> <br></p>
-<ul>
-<li><strong>Download R Script file here:</strong> <a href="https://github.com/ID529/lectures2024/blob/master/day5/lecture3-data-linkage-methods/nhanes-activity.R" class="uri">https://github.com/ID529/lectures2024/blob/master/day5/lecture3-data-linkage-methods/nhanes-activity.R</a>
-<ul>
-<li><code>nhanes-activity.R</code></li>
-</ul></li>
-</ul>
+<p><strong>Clone the repository here:</strong> <a href="https://github.com/dmarengi/joining_data" class="uri">https://github.com/dmarengi/joining_data</a> <!-- -   **Download R Script file here:** <https://github.com/ID529/lectures2024/blob/master/day5/lecture3-data-linkage-methods/nhanes-activity.R> --> <!--     -   `nhanes-activity.R` --></p>
 <p><br></p>
 <ul>
 <li><strong>ID 529 dataset details:</strong> <a href="https://github.com/ID529/ID529data" class="uri">https://github.com/ID529/ID529data</a></li>
 </ul>
+<!-- ## To add {.smaller} -->
+<!-- -   bind_rows() and bind_cols() slide -->
+<!-- -   crosswalk for id's example (and image showing map from dataset 1 -->
+<p>2 –&gt; 3) –&gt; <!-- -   one to many example  --> <!-- -   merging 3+ tables example --></p>
 
 <img src="images/id529-sticker.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://id529.github.io/" class="uri">https://id529.github.io/</a></p>
@@ -1416,6 +1434,7 @@
   <script src="data-linkage-methods_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="data-linkage-methods_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="data-linkage-methods_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="data-linkage-methods_files/libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
   <script src="data-linkage-methods_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -1438,6 +1457,7 @@
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'pointer': {"key":"q","color":"red","pointerSize":16,"alwaysVisible":false},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1608,7 +1628,7 @@
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealPointer, QuartoSupport,
 
           RevealMath,
           RevealNotes,

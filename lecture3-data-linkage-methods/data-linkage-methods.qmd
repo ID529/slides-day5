@@ -1,11 +1,14 @@
 ---
 format: 
   revealjs:
-    theme: [simple, ../../day2/lecture3-reading-in-data/custom.scss]
+    # theme: [simple, ../../day2/lecture3-reading-in-data/custom.scss]
+    theme: [simple, ../../slides-day5/lecture3-data-linkage-methods/custom.scss]
     highlight: pygments
     logo: images/id529-sticker.png
     slide-number: true
     footer: "<https://id529.github.io/>"
+revealjs-plugins:
+  - pointer
 execute: 
   echo: true
 ---
@@ -17,7 +20,7 @@ ID 529: Data Management and Analytic Workflows in R
 :::
 
 ::: {.white-12-pt}
-Dean Marengi \| Friday, January 12<sup>th</sup>, 2024
+Dean Marengi \| Friday, January 17<sup>th</sup>, 2025
 :::
 
 ## Motivation {.smaller}
@@ -114,7 +117,7 @@ as_tibble(nhanesTables(c("DIET"), 2018))
 
 -   **We will focus on `dplyr`**
     -   `dplyr` functions tend to be more consistent, and intuitive to implement
-    -   Can be combined into chained data manipulation sequences (`%>%`)
+    -   Can be combined into chained data manipulation sequences (`|> or %>%`)
     -   Also offers additional types of joins such as semi-joins and anti-joins
 
 ## `dplyr` two table verbs {.smaller}
@@ -151,9 +154,21 @@ as_tibble(nhanesTables(c("DIET"), 2018))
 :::{.small-break}
 :::
 
--   [Set operations]{.blue-bold}
-    -   Combine observations from two datasets, but treats observations as set elements
-    -   `intersect()`, `union()`, `setdiff()`
+
+**Set operations**
+
+-   Combine observations from two datasets, but treats observations as set elements
+    -   i.e., treat rows in each table as individual items in a set
+        -   Both tables need to contain the same columns
+        -   Find rows in both tables ([intersection]{.blue-bold})
+        -   Find rows in either table, but not both ([union]{.blue-bold})
+        -   Find rows in one table, but not other ([difference]{.blue-bold})
+
+:::{.small-break}
+:::
+
+-   `intersect()`, `union()`, `setdiff()`
+
 
 ![](images/hex-dplyr.png){.absolute right="0" bottom="1" height="30%"}
 
@@ -190,8 +205,8 @@ library(ID529data)
 data(nhanes_id529, package = 'ID529data')
 
 # Create new ID  variables for examples
-nhanes <- nhanes_id529 %>% 
-  arrange(id) %>% 
+nhanes <- nhanes_id529 %>%
+  arrange(id) %>%
   mutate(id1 = id,
          id2 = paste0("NH", seq(1:nrow(.)) + 2 * 10^4)) %>% 
   select(matches("id"), everything()) %>% 
@@ -265,8 +280,8 @@ pfas
 
 ```{r, echo=T, eval=F}
 left_join(
-  x,
-  y,
+  x, # dataset 1 (i.e., the dataset on the left side)
+  y, # dataset 2 (i.e., the dataset on the right side)
   by = NULL,
   suffix = c(".x", ".y"),
   keep = FALSE
@@ -291,7 +306,7 @@ left_join(
 -   All rows from `x` are preserved in the join
     -   i.e., keeps all rows from `x` regardless of whether there's a match in `y`
 -   Of the joins, used most frequently
-    -   Allow you to add new variables from other tables without dropping observations
+    -   Allow you to add new variables from other tables
 
 :::
 ::::
@@ -780,14 +795,31 @@ Gif Source: <https://github.com/gadenbuie/tidyexplain>
 
 -   **R for Data Science - Relational Data:** <https://r4ds.had.co.nz/relational-data.html>
 
+::: {.small-break}
+:::
+
+-   **The Epidemiologist R Handbook:** <https://epirhandbook.com/en/new_pages/joining_matching.html>
+
 ## Activity {.smaller}
 
 <br> <br> <br>
 
--   **Download R Script file here:** <https://github.com/ID529/lectures2024/blob/master/day5/lecture3-data-linkage-methods/nhanes-activity.R>
-    -   `nhanes-activity.R`
+
+**Clone the repository here:** <https://github.com/dmarengi/joining_data>
+<!-- -   **Download R Script file here:** <https://github.com/ID529/lectures2024/blob/master/day5/lecture3-data-linkage-methods/nhanes-activity.R> -->
+<!--     -   `nhanes-activity.R` -->
 
 <br>
 
 -   **ID 529 dataset details:** <https://github.com/ID529/ID529data>
+
+
+<!-- ## To add {.smaller} -->
+
+<!-- -   bind_rows() and bind_cols() slide -->
+<!-- -   crosswalk for id's example (and image showing map from dataset 1 --> 2 --> 3) -->
+<!-- -   one to many example  -->
+<!-- -   merging 3+ tables example -->
+
+
   
