@@ -805,7 +805,7 @@ Gif Source: <https://github.com/gadenbuie/tidyexplain>
 <br> <br> <br>
 
 
-**Clone the repository here:** <https://github.com/dmarengi/joining_data>
+-   **Clone the repository here:** <https://github.com/dmarengi/joining_data>
 <!-- -   **Download R Script file here:** <https://github.com/ID529/lectures2024/blob/master/day5/lecture3-data-linkage-methods/nhanes-activity.R> -->
 <!--     -   `nhanes-activity.R` -->
 
@@ -817,7 +817,7 @@ Gif Source: <https://github.com/gadenbuie/tidyexplain>
 <!-- ## To add {.smaller} -->
 
 <!-- -   bind_rows() and bind_cols() slide -->
-<!-- -   crosswalk for id's example (and image showing map from dataset 1 --> 2 --> 3) -->
+<!-- -   crosswalk for id's example (and image showing map from dataset -->
 <!-- -   one to many example  -->
 <!-- -   merging 3+ tables example -->
 
