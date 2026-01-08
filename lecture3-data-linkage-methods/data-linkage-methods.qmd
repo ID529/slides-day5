@@ -20,7 +20,7 @@ ID 529: Data Management and Analytic Workflows in R
 :::
 
 ::: {.white-12-pt}
-Dean Marengi \| Friday, January 17<sup>th</sup>, 2025
+Dean Marengi \| Friday, January 16<sup>th</sup>, 2026
 :::
 
 ## Motivation {.smaller}
