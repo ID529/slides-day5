@@ -43,7 +43,7 @@ Jarvis Chen
 
 <br>
 
-Friday, January 17, 2025
+Friday, January 16, 2026
 
 
 ## Follow along {.smaller}
@@ -66,16 +66,18 @@ https://bit.ly/id529_regression_models
 - Learn how to create some pretty tables
 
   - Learn about the `gtsummary` package
-  - Learn about the `sjPlot` package
-  - Learn about the `stargazer` package
   - Learn how to create plots of regression results
 
+- Also available in the code (but we won't go over it today)
+  - the `sjPlot` package
+  - the `stargazer` package
+  
 
 ::: 
 
 ## Data preparation {.smaller}
 
-- As we covered on Day 4, we begin by doing some data cleaning steps.
+- As we covered yesterday, we begin by doing some data cleaning steps.
 
 ```{r}
 df <- NHANES  |>  
